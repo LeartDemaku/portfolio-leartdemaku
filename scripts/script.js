@@ -10,7 +10,7 @@ const translations = {
         profesion: "I craft high-performance, user-focused web experiences",
         exploreProjects: "Explore My Latest Work",
         aboutTitle: "About Me",
-        aboutText: "I’m Leart Demaku, a web developer with solid knowledge of HTML, CSS, JavaScript, Python, and SQLite (SQL). I build modern, fast, and fully responsive websites with a strong focus on clear structure, performance, and excellent user experience. I prioritize clean, maintainable code and reliable functionality, paying close attention to detail. I also use modern AI tools to enhance efficiency and creativity in development.",
+        aboutText: "I’m Leart Demaku, a Full-Stack Web Developer focused on building modern, responsive, and high-performance web applications. I possess strong competencies in developing Frontend interfaces and creating APIs using Node.js & Express.js, integrated with SQL database architecture (SQLite & SQL Server) and Python. I apply advanced AI-Assisted Development and Prompt Engineering practices to optimize software development processes. I am driven by high standards of professional coding, structured version control with Git/GitHub, and building functional, user-experience-oriented solutions.",
         AI: "AI Enthusiast",
         hireMe: "Let's Build Something",
         viewPortfolio: "View All Projects",
@@ -57,7 +57,7 @@ const translations = {
         profesion: "Unë krijoj përvoja uebi me performancë të lartë dhe të fokusuara te përdoruesi",
         exploreProjects: "Zbulo Punët e Mia",
         aboutTitle: "Rreth Meje",
-        aboutText: "Jam Leart Demaku, zhillues uebi me njohuri solide në HTML, CSS, JavaScript, Python dhe SQLite (SQL). Ndërtoj faqe ueb moderne, të shpejta dhe plotësisht responsive, me fokus në strukturë të qartë, performancë dhe përvojë të shkëlqyer të përdoruesit. I kushtoj rëndësi kodit të pastër, funksionalitetit të qëndrueshëm dhe detajeve që përmirësojnë cilësinë e produktit. Gjithashtu përdori mjete moderne të inteligjencës artificiale për të rritur efikasitetin dhe kreativitetin në zhvillim.",
+        aboutText: "Jam Leart Demaku, zhvillues uebi Full-Stack i fokusuar në ndërtimin e ueb-aplikacioneve moderne, responsive dhe të optimizuara për performancë të lartë. Zotëroj kompetenca në zhvillimin e ndërfaqeve Frontend dhe në krijimin e API-ve përmes Node.js & Express.js, të integruara me arkitekturën e databazave SQL (SQLite & SQL Server) dhe gjuhën Python. Aplikoj praktika të avancuara të AI-Assisted Development dhe Prompt Engineering për optimizimin e proceseve të zhvillimit softuerik. I orientuar drejt standardeve të larta të kodimit profesional, menaxhimit të strukturuar të kodeve me Git/GitHub dhe krijimit të zgjidhjeve funksionale të bazuara në përvojën e përdoruesit.",
         AI: "Entuziast i AI",
         hireMe: "Bashkëpunoni me Mua",
         viewPortfolio: "Shiko Galerinë",
@@ -353,18 +353,3 @@ if (typeof gsap !== 'undefined') {
         });
     });
 }
-
-// Weird Express code (kept as per request)
-// Note: This won't work in the browser but is kept to maintain original state
-/*
-const express = require('express');
-const app = express();
-
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
-});
-
-app.listen(5000, '0.0.0.0', () => {
-    console.log('Server running on port 5000');
-});
-*/
