@@ -149,8 +149,10 @@
                         <div class="about-actions mt-5" data-aos="zoom-in" data-aos-delay="400">
                             <div class="d-flex justify-content-center gap-3 flex-wrap">
                                 <a href="#contact" class="btn btn-outline-light px-4 py-2" data-key="hireMe">Hire Me</a>
-                                <a href="#projects" class="btn btn-primary px-4 py-2" data-key="viewPortfolio">View
-                                    Projects</a>
+                                <a href="#projects" class="btn btn-primary px-4 py-2" data-key="viewPortfolio">View Projects</a>
+                                <button id="openCvBtn" class="btn btn-cv px-4 py-2" data-key="viewCV" onclick="openCVModal()">
+                                    <i class="fas fa-file-pdf me-2"></i>View CV
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -517,6 +519,73 @@
             </div>
         </div>
     </footer>
+
+    <!-- CV Modal -->
+    <div id="cvModal" class="cv-modal" role="dialog" aria-modal="true" aria-label="CV Preview">
+        <div class="cv-modal-overlay" onclick="closeCVModal()"></div>
+        <div class="cv-modal-container">
+            <div class="cv-modal-header">
+                <div class="cv-modal-title">
+                    <i class="fas fa-file-pdf cv-pdf-icon"></i>
+                    <span data-key="cvTitle">Leart Demaku — Curriculum Vitae</span>
+                </div>
+                <div class="cv-modal-actions">
+                    <a id="cvDownloadBtn" href="CV/Leart_Demaku_CV.pdf" download="Leart_Demaku_CV.pdf" class="btn-cv-action btn-cv-download" title="Download CV">
+                        <i class="fas fa-download"></i>
+                        <span data-key="downloadCV">Download</span>
+                    </a>
+                    <button class="btn-cv-action btn-cv-close" onclick="closeCVModal()" title="Close" aria-label="Close CV modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="cv-modal-body">
+                <iframe id="cvIframe" src="" title="CV PDF" class="cv-iframe" allowfullscreen></iframe>
+                <div class="cv-fallback" id="cvFallback">
+                    <i class="fas fa-file-pdf cv-fallback-icon"></i>
+                    <p data-key="cvFallbackText">Your browser cannot display this PDF.</p>
+                    <a href="CV/Leart_Demaku_CV.pdf" download="Leart_Demaku_CV.pdf" class="btn btn-primary mt-3">
+                        <i class="fas fa-download me-2"></i>
+                        <span data-key="downloadCV">Download CV</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chat Widget -->
+    <div id="aiChatWidget">
+        <button id="aiChatToggle" aria-label="Open AI Assistant" onclick="toggleChat()">
+            <span id="aiChatIconOpen"><i class="fas fa-comments"></i></span>
+            <span id="aiChatIconClose" style="display:none;"><i class="fas fa-times"></i></span>
+            <span class="ai-chat-badge">AI</span>
+        </button>
+        <div id="aiChatPanel" aria-hidden="true">
+            <div id="aiChatHeader">
+                <div class="ai-header-info">
+                    <div class="ai-avatar"><i class="fas fa-robot"></i></div>
+                    <div>
+                        <div class="ai-header-name" data-key="aiHeaderName">Leart's AI Assistant</div>
+                        <div class="ai-header-status"><span class="ai-status-dot"></span><span data-key="aiStatus">Online</span></div>
+                    </div>
+                </div>
+                <button class="ai-close-btn" onclick="toggleChat()" aria-label="Close chat"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="aiChatMessages"></div>
+            <div id="aiQuickQuestions">
+                <button class="ai-quick-btn" data-key="aiQ1" onclick="sendQuick(this)">Who is Leart Demaku?</button>
+                <button class="ai-quick-btn" data-key="aiQ2" onclick="sendQuick(this)">What is his profession?</button>
+                <button class="ai-quick-btn" data-key="aiQ3" onclick="sendQuick(this)">What services does he offer?</button>
+                <button class="ai-quick-btn" data-key="aiQ4" onclick="sendQuick(this)">What projects has he built?</button>
+                <button class="ai-quick-btn" data-key="aiQ5" onclick="sendQuick(this)">What technologies does he use?</button>
+                <button class="ai-quick-btn" data-key="aiQ6" onclick="sendQuick(this)">How can I contact him?</button>
+            </div>
+            <div id="aiChatInputArea">
+                <input id="aiChatInput" type="text" data-key="aiPlaceholder" placeholder="Ask me anything about Leart..." autocomplete="off" onkeydown="handleChatKey(event)">
+                <button id="aiSendBtn" onclick="handleSend()" aria-label="Send message"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
