@@ -50,6 +50,7 @@ body {
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     transition: background 0.4s ease;
+    z-index: 1050;
 }
 
 .nav-link {
@@ -680,6 +681,14 @@ body {
     position: relative;
     display: inline-block;
     margin-left: 1.0rem;
+    z-index: 10;
+}
+
+.lang-switcher:hover,
+.theme-switcher:hover,
+.lang-switcher.active,
+.theme-switcher.active {
+    z-index: 1100;
 }
 
 .lang-btn,

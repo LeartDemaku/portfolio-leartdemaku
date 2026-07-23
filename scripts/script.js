@@ -128,9 +128,10 @@ const translations = {
 let typed = null;
 
 function changeLanguage(lang) {
+    if (!translations[lang]) return;
     document.querySelectorAll('[data-key]').forEach(element => {
         const key = element.dataset.key;
-        if (translations[lang] && translations[lang][key]) {
+        if (translations[lang][key]) {
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = translations[lang][key];
             } else {
@@ -160,14 +161,6 @@ function changeLanguage(lang) {
     }
 }
 
-document.querySelectorAll('.lang-option').forEach(option => {
-    option.addEventListener('click', (e) => {
-        e.stopPropagation();
-        changeLanguage(option.dataset.lang);
-        const langOptions = document.querySelector('.lang-options');
-        if (langOptions) langOptions.classList.remove('active');
-    });
-});
 
 // Theme Switcher Logic
 function changeTheme(theme) {
@@ -199,14 +192,6 @@ function changeTheme(theme) {
     localStorage.setItem('selectedTheme', theme);
 }
 
-document.querySelectorAll('.theme-option').forEach(option => {
-    option.addEventListener('click', (e) => {
-        e.stopPropagation();
-        changeTheme(option.dataset.theme);
-        const themeOptions = document.querySelector('.theme-options');
-        if (themeOptions) themeOptions.classList.remove('active');
-    });
-});
 
 // Initialize language and theme after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
@@ -237,6 +222,42 @@ document.addEventListener('DOMContentLoaded', () => {
         const themeOpts = document.querySelector('.theme-options');
         if (langOpts) langOpts.classList.remove('active');
         if (themeOpts) themeOpts.classList.remove('active');
+    });
+
+    document.querySelectorAll('.lang-option').forEach(option => {
+        option.addEventListener('click', (e) => {
+            e.stopPropagation();
+            changeLanguage(option.dataset.lang);
+            const langOptions = document.querySelector('.lang-options');
+            if (langOptions) langOptions.classList.remove('active');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                if (bsCollapse) {
+                    bsCollapse.hide();
+                } else {
+                    new bootstrap.Collapse(navbarCollapse).hide();
+                }
+            }
+        });
+    });
+
+    document.querySelectorAll('.theme-option').forEach(option => {
+        option.addEventListener('click', (e) => {
+            e.stopPropagation();
+            changeTheme(option.dataset.theme);
+            const themeOptions = document.querySelector('.theme-options');
+            if (themeOptions) themeOptions.classList.remove('active');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                if (bsCollapse) {
+                    bsCollapse.hide();
+                } else {
+                    new bootstrap.Collapse(navbarCollapse).hide();
+                }
+            }
+        });
     });
 
     changeLanguage('en');
@@ -389,6 +410,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: top,
                     behavior: 'smooth'
                 });
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if (bsCollapse) {
+                        bsCollapse.hide();
+                    } else {
+                        new bootstrap.Collapse(navbarCollapse).hide();
+                    }
+                }
             }
         });
     });
