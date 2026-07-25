@@ -44,6 +44,7 @@ const translations = {
         footerText: "© Leart Demaku - Portfolio. All rights reserved.",
         footercontact: "Contact",
         themeDinner: "Dinner Mode",
+        themeGray: "Gray Mode",
         dynamicTexts: ["I craft high-performance, user-focused web experiences", "Web Developer", "UI/UX implementation", "Web Implementation"],
         viewCV: "View CV",
         cvTitle: "Leart Demaku \u2014 Curriculum Vitae",
@@ -127,6 +128,14 @@ const translations = {
 
 let typed = null;
 
+function toggleNav() {
+    document.getElementById('navbarNav').classList.toggle('nav-open');
+}
+
+function closeNav() {
+    document.getElementById('navbarNav').classList.remove('nav-open');
+}
+
 function changeLanguage(lang) {
     if (!translations[lang]) return;
     document.querySelectorAll('[data-key]').forEach(element => {
@@ -134,6 +143,12 @@ function changeLanguage(lang) {
         if (translations[lang][key]) {
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = translations[lang][key];
+            } else if (element.children.length > 0) {
+                element.childNodes.forEach(node => {
+                    if (node.nodeType === 3 && node.textContent.trim()) {
+                        node.textContent = translations[lang][key];
+                    }
+                });
             } else {
                 element.textContent = translations[lang][key];
             }
@@ -159,109 +174,44 @@ function changeLanguage(lang) {
     if (currentLangEl) {
         currentLangEl.textContent = lang.toUpperCase();
     }
+
+    document.querySelectorAll('.ld-lang-btn').forEach(function(b) {
+        b.classList.toggle('ld-active', b.getAttribute('data-lang') === lang);
+    });
+
+    closeNav();
 }
 
 
 // Theme Switcher Logic
 function changeTheme(theme) {
-    const themeIcon = document.querySelector('.theme-btn i');
-    const currentThemeEl = document.querySelector('.current-theme');
     if (theme === 'gray') {
         document.body.classList.add('gray-mode');
-        if (currentThemeEl) {
-            currentThemeEl.setAttribute('data-key', 'themeGray');
-        }
-        if (themeIcon) {
-            themeIcon.className = 'fas fa-sun';
-        }
     } else {
         document.body.classList.remove('gray-mode');
-        if (currentThemeEl) {
-            currentThemeEl.setAttribute('data-key', 'themeDinner');
-        }
-        if (themeIcon) {
-            themeIcon.className = 'fas fa-moon';
-        }
     }
 
-    // Re-trigger language update for the newly set data-key
+    document.querySelectorAll('.ld-theme-btn').forEach(function(b) {
+        b.classList.toggle('ld-active', b.getAttribute('data-theme') === theme);
+    });
+
+    const currentThemeEl = document.querySelector('.current-theme');
+    if (currentThemeEl) {
+        currentThemeEl.setAttribute('data-key', theme === 'gray' ? 'themeGray' : 'themeDinner');
+    }
+
     const currentLangEl = document.querySelector('.current-lang');
     const currentLang = currentLangEl ? currentLangEl.textContent.trim().toLowerCase() : 'en';
     changeLanguage(currentLang);
 
     localStorage.setItem('selectedTheme', theme);
+    closeNav();
 }
 
 
-// Initialize language and theme after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    const langBtn = document.querySelector('.lang-btn');
-    const langOptions = document.querySelector('.lang-options');
-    if (langBtn && langOptions) {
-        langBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            langOptions.classList.toggle('active');
-            const themeOptions = document.querySelector('.theme-options');
-            if (themeOptions) themeOptions.classList.remove('active');
-        });
-    }
-
-    const themeBtn = document.querySelector('.theme-btn');
-    const themeOptions = document.querySelector('.theme-options');
-    if (themeBtn && themeOptions) {
-        themeBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            themeOptions.classList.toggle('active');
-            const langOptions = document.querySelector('.lang-options');
-            if (langOptions) langOptions.classList.remove('active');
-        });
-    }
-
-    document.addEventListener('click', () => {
-        const langOpts = document.querySelector('.lang-options');
-        const themeOpts = document.querySelector('.theme-options');
-        if (langOpts) langOpts.classList.remove('active');
-        if (themeOpts) themeOpts.classList.remove('active');
-    });
-
-    document.querySelectorAll('.lang-option').forEach(option => {
-        option.addEventListener('click', (e) => {
-            e.stopPropagation();
-            changeLanguage(option.dataset.lang);
-            const langOptions = document.querySelector('.lang-options');
-            if (langOptions) langOptions.classList.remove('active');
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                if (bsCollapse) {
-                    bsCollapse.hide();
-                } else {
-                    new bootstrap.Collapse(navbarCollapse).hide();
-                }
-            }
-        });
-    });
-
-    document.querySelectorAll('.theme-option').forEach(option => {
-        option.addEventListener('click', (e) => {
-            e.stopPropagation();
-            changeTheme(option.dataset.theme);
-            const themeOptions = document.querySelector('.theme-options');
-            if (themeOptions) themeOptions.classList.remove('active');
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                if (bsCollapse) {
-                    bsCollapse.hide();
-                } else {
-                    new bootstrap.Collapse(navbarCollapse).hide();
-                }
-            }
-        });
-    });
-
     changeLanguage('en');
-    const savedTheme = localStorage.getItem('selectedTheme') || 'black';
+    var savedTheme = localStorage.getItem('selectedTheme') || 'black';
     changeTheme(savedTheme);
 });
 
@@ -410,15 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: top,
                     behavior: 'smooth'
                 });
-                const navbarCollapse = document.querySelector('.navbar-collapse');
-                if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                    if (bsCollapse) {
-                        bsCollapse.hide();
-                    } else {
-                        new bootstrap.Collapse(navbarCollapse).hide();
-                    }
-                }
+                closeNav();
             }
         });
     });
