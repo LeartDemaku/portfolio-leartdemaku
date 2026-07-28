@@ -1,4 +1,3 @@
-// Translation and Language Switcher logic
 const translations = {
     en: {
         home: "HOME",
@@ -182,8 +181,6 @@ function changeLanguage(lang) {
     closeNav();
 }
 
-
-// Theme Switcher Logic
 function changeTheme(theme) {
     if (theme === 'gray') {
         document.body.classList.add('gray-mode');
@@ -208,14 +205,12 @@ function changeTheme(theme) {
     closeNav();
 }
 
-
 document.addEventListener('DOMContentLoaded', () => {
     changeLanguage('en');
     var savedTheme = localStorage.getItem('selectedTheme') || 'black';
     changeTheme(savedTheme);
 });
 
-// Services Section Observer
 const servObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -237,7 +232,6 @@ document.querySelectorAll('.services-section .service-icon').forEach(icon => {
     });
 });
 
-// Contact Form Script
 document.addEventListener('DOMContentLoaded', function () {
     const contactForm = document.getElementById('contactForm');
     const formSuccess = document.getElementById('formSuccess');
@@ -304,7 +298,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// AOS, Particles, and Smooth Scroll
 document.addEventListener('DOMContentLoaded', () => {
     if (typeof AOS !== 'undefined') {
         AOS.init({
@@ -337,8 +330,8 @@ document.addEventListener('DOMContentLoaded', () => {
             interactivity: {
                 detect_on: 'canvas',
                 events: {
-                    onhover: { enable: true, mode: 'repulse' },
-                    onclick: { enable: true, mode: 'push' },
+                    onhover: { enable: window.innerWidth >= 992, mode: 'repulse' },
+                    onclick: { enable: window.innerWidth >= 992, mode: 'push' },
                     resize: true
                 }
             }
@@ -349,6 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 const navbar = document.querySelector('.navbar');
@@ -366,7 +360,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// GSAP Animations
 if (typeof gsap !== 'undefined') {
     if (typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
@@ -374,34 +367,28 @@ if (typeof gsap !== 'undefined') {
         document.querySelectorAll('section').forEach(section => {
             gsap.from(section, {
                 opacity: 0,
-                y: 50,
-                duration: 1,
+                y: 30,
+                duration: 0.8,
                 ease: "power2.out",
                 scrollTrigger: {
                     trigger: section,
-                    start: "top 80%",
-                    toggleActions: "play none none reverse"
+                    start: "top 90%",
+                    toggleActions: "play none none none"
                 }
             });
         });
     }
 
-    document.querySelectorAll('a.btn, button').forEach(btn => {
-        btn.addEventListener('mouseenter', function () {
-            gsap.to(this, { scale: 1.1, duration: 0.2 });
+    if (window.matchMedia('(hover: hover)').matches) {
+        document.querySelectorAll('a.btn, button').forEach(btn => {
+            btn.addEventListener('mouseenter', function () {
+                gsap.to(this, { scale: 1.1, duration: 0.2 });
+            });
+            btn.addEventListener('mouseleave', function () {
+                gsap.to(this, { scale: 1, duration: 0.2 });
+            });
         });
-        btn.addEventListener('mouseleave', function () {
-            gsap.to(this, { scale: 1, duration: 0.2 });
-        });
-    });
-
-    document.querySelectorAll('#about a.btn').forEach(btn => {
-        btn.addEventListener('click', function (e) {
-            gsap.timeline()
-                .to(this, { rotation: 360, scale: 1.5, duration: 0.7, ease: "elastic.out(1, 0.3)" })
-                .to(this, { rotation: 0, scale: 1, duration: 0.7, ease: "elastic.out(1, 0.3)" });
-        });
-    });
+    }
 }
 
 function openCVModal() {
@@ -425,7 +412,6 @@ function openCVModal() {
                 fallback.classList.add('visible');
             }
         } catch (e) {
-            // Cross-origin: PDF is loading normally
         }
     };
 

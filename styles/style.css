@@ -1,31 +1,26 @@
 :root {
-    /* Base Colors */
     --primary: #f0c674;
     --accent: #bf616a;
     --text: #d1d1d1;
 
-    /* Theme - Black Mode (Default/Dinner) */
     --bg-dark: #000000;
     --bg-secondary: #0a0a0a;
     --card-bg: rgba(20, 20, 20, 0.7);
     --nav-bg: rgba(0, 0, 0, 0.95);
     --border-color: rgba(240, 198, 116, 0.1);
 
-    /* Buttons - Dinner Mode: Black & Gold */
     --btn-bg: #000000;
     --btn-text: #f0c674;
     --btn-border: #f0c674;
 }
 
 body.gray-mode {
-    /* Theme - Gray Mode */
     --bg-dark: #2e3440;
     --bg-secondary: #3b4252;
     --card-bg: rgba(59, 66, 82, 0.6);
     --nav-bg: rgba(46, 52, 64, 0.95);
     --border-color: rgba(240, 198, 116, 0.15);
 
-    /* Buttons - Gray Mode: Gold & Dark */
     --btn-bg: #f0c674;
     --btn-text: #2e3440;
     --btn-border: #f0c674;
@@ -42,15 +37,43 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-
-
-
 .navbar {
     background: var(--nav-bg) !important;
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
     transition: background 0.4s ease;
-    z-index: 1050;
+    z-index: 10000;
+}
+
+#aiChatWidget {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+    pointer-events: none;
+}
+
+#aiChatToggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f0c674, #d4a843);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+    color: #0a0a0a;
+    box-shadow: 0 6px 24px rgba(240, 198, 116, 0.45), 0 2px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    flex-shrink: 0;
+    pointer-events: auto;
 }
 
 .nav-link {
@@ -90,7 +113,6 @@ body {
     color: var(--secondary);
 }
 
-/* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -206,7 +228,6 @@ body {
     }
 }
 
-/* About Me Section */
 #about {
     background: linear-gradient(-45deg, rgba(240, 198, 116, 0.05), rgba(46, 52, 64, 0.1), rgba(240, 198, 116, 0.05));
     background-size: 400% 400%;
@@ -406,6 +427,7 @@ body {
     width: 100%;
     height: 100%;
     z-index: 0;
+    pointer-events: none;
 }
 
 .glass-form {
@@ -519,7 +541,6 @@ body {
     }
 }
 
-/* Services Section Styles */
 .services-section {
     --serv-primary: #2a2a72;
     --serv-secondary: #009ffd;
@@ -545,9 +566,8 @@ body {
     font-size: 2.5rem;
     margin-bottom: 4rem;
     position: relative;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: serv-fadeUp 0.8s forwards;
+    opacity: 1;
+    transform: none;
 }
 
 .services-container {
@@ -562,11 +582,11 @@ body {
     padding: 2.5rem;
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
-    transform: translateY(50px);
-    opacity: 0;
     transition: all 0.4s ease;
     position: relative;
     overflow: hidden;
+    opacity: 1;
+    transform: none;
 }
 
 .service-card::before {
@@ -623,13 +643,6 @@ body {
     transition: transform 0.1s ease;
 }
 
-@keyframes serv-fadeUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 @keyframes serv-borderEffect {
     0% {
         transform: rotate(45deg) translateX(-50%);
@@ -664,7 +677,6 @@ body {
     box-shadow: 0 15px 30px rgba(240, 198, 116, 0.3);
 }
 
-
 @keyframes serv-marquee {
     0% {
         transform: translateX(100%);
@@ -675,7 +687,6 @@ body {
     }
 }
 
-/* Language & Theme Switcher Styles */
 .ld-lang-btn, .ld-theme-btn {
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -750,7 +761,6 @@ body {
     }
 }
 
-/* About Section Specific Styles (Consolidated) */
 #about {
     background: linear-gradient(-45deg, rgba(240, 198, 116, 0.05), rgba(46, 52, 64, 0.1), rgba(240, 198, 116, 0.05));
     background-size: 400% 400%;
@@ -778,7 +788,6 @@ body {
     margin-top: -10px;
 }
 
-/* Utility and Footer Styles */
 a {
     pointer-events: auto !important;
     display: inline-block;
@@ -878,7 +887,6 @@ footer {
     }
 }
 
-/* CV Button */
 .btn-cv {
     background: linear-gradient(135deg, #c0392b, #e74c3c);
     border: 2px solid #e74c3c;
@@ -899,7 +907,6 @@ footer {
     color: #fff !important;
 }
 
-/* CV Modal Overlay */
 .cv-modal {
     position: fixed;
     inset: 0;
@@ -925,7 +932,6 @@ footer {
     cursor: pointer;
 }
 
-/* CV Modal Container */
 .cv-modal-container {
     position: relative;
     z-index: 1;
@@ -947,7 +953,6 @@ footer {
     transform: translateY(0) scale(1);
 }
 
-/* CV Modal Header */
 .cv-modal-header {
     display: flex;
     align-items: center;
@@ -1029,7 +1034,6 @@ footer {
     transform: rotate(90deg);
 }
 
-/* CV iframe body */
 .cv-modal-body {
     flex: 1;
     overflow: hidden;
@@ -1044,7 +1048,6 @@ footer {
     display: block;
 }
 
-/* Fallback when PDF cannot load */
 .cv-fallback {
     display: none;
     flex-direction: column;
@@ -1067,7 +1070,6 @@ footer {
     opacity: 0.7;
 }
 
-/* Responsive CV Modal */
 @media (max-width: 768px) {
     .cv-modal-container {
         width: 100vw;
@@ -1102,35 +1104,6 @@ footer {
 
 body.cv-open {
     overflow: hidden;
-}
-
-#aiChatWidget {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    z-index: 99998;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 14px;
-}
-
-#aiChatToggle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #f0c674, #d4a843);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.45rem;
-    color: #0a0a0a;
-    box-shadow: 0 6px 24px rgba(240, 198, 116, 0.45), 0 2px 8px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    flex-shrink: 0;
 }
 
 #aiChatToggle:hover {
@@ -1450,21 +1423,33 @@ body.cv-open {
     box-shadow: 0 4px 14px rgba(240,198,116,0.4);
 }
 
-@media (max-width: 480px) {
+@media (max-width: 991px) {
     #aiChatWidget {
         bottom: 16px;
         right: 16px;
+        z-index: 1000;
+    }
+
+    #aiChatToggle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
     }
 
     #aiChatPanel {
         width: calc(100vw - 32px);
-        height: 72vh;
-        max-height: 520px;
+        height: 70vh;
+        max-height: 500px;
         border-radius: 16px;
     }
 }
 
 @media (max-width: 360px) {
+    #aiChatWidget {
+        bottom: 12px;
+        right: 12px;
+    }
+
     #aiChatPanel {
         width: calc(100vw - 24px);
     }
