@@ -15,15 +15,319 @@
 }
 
 body.gray-mode {
-    --bg-dark: #2e3440;
-    --bg-secondary: #3b4252;
-    --card-bg: rgba(59, 66, 82, 0.6);
-    --nav-bg: rgba(46, 52, 64, 0.95);
-    --border-color: rgba(240, 198, 116, 0.15);
+    --bg-dark: #0f1026;
+    --bg-secondary: #161836;
+    --card-bg: rgba(22, 24, 54, 0.75);
+    --nav-bg: rgba(15, 16, 38, 0.92);
+    --border-color: rgba(168, 85, 247, 0.3);
+    --text: #e2e8f0;
+    --btn-bg: linear-gradient(135deg, #7c3aed, #2563eb);
+    --btn-text: #ffffff;
+    --btn-border: #8b5cf6;
+    background: radial-gradient(circle at 50% 30%, #1a1b3a, #0b0c1e 80%) !important;
+    background-attachment: fixed !important;
+    color: #e2e8f0;
+}
 
-    --btn-bg: #f0c674;
-    --btn-text: #2e3440;
-    --btn-border: #f0c674;
+body.gray-mode .name-header {
+    background: linear-gradient(45deg, #c084fc, #60a5fa, #f0c674);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(192, 132, 252, 0.45);
+}
+
+body.gray-mode .hero {
+    background: radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.18), transparent 70%);
+}
+
+body.gray-mode .section-title {
+    color: #c084fc;
+}
+
+body.gray-mode .section-title::after {
+    background: linear-gradient(90deg, #c084fc, #60a5fa);
+}
+
+body.gray-mode #about {
+    background: linear-gradient(-45deg, rgba(124, 58, 237, 0.12), rgba(15, 16, 38, 0.95), rgba(59, 130, 246, 0.12));
+    background-size: 400% 400%;
+}
+
+body.gray-mode .about-card {
+    background: rgba(22, 24, 54, 0.75);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 35px rgba(124, 58, 237, 0.2);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+}
+
+body.gray-mode .about-text {
+    color: #e2e8f0;
+}
+
+body.gray-mode .skill-tag {
+    background: rgba(168, 85, 247, 0.15);
+    color: #c084fc;
+    border-color: rgba(168, 85, 247, 0.4);
+}
+
+body.gray-mode .skill-tag:hover {
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+}
+
+body.gray-mode .services-section {
+    background: transparent;
+    color: #e2e8f0;
+}
+
+body.gray-mode .service-card {
+    background: rgba(22, 24, 54, 0.75);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15);
+}
+
+body.gray-mode .service-card:hover {
+    box-shadow: 0 18px 45px rgba(168, 85, 247, 0.35);
+    border-color: rgba(168, 85, 247, 0.6);
+}
+
+body.gray-mode .service-title {
+    color: #ffffff;
+}
+
+body.gray-mode .service-description {
+    color: #cbd5e1;
+}
+
+body.gray-mode .service-icon {
+    color: #c084fc;
+}
+
+body.gray-mode .tech-item {
+    background: rgba(168, 85, 247, 0.15);
+    color: #e2e8f0;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+body.gray-mode .gradient-card {
+    background: rgba(22, 24, 54, 0.75);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.15);
+}
+
+body.gray-mode .gradient-card:hover {
+    box-shadow: 0 18px 45px rgba(168, 85, 247, 0.35);
+    border-color: rgba(168, 85, 247, 0.6);
+}
+
+body.gray-mode .gradient-card h3,
+body.gray-mode .gradient-card h4,
+body.gray-mode .gradient-card h5,
+body.gray-mode .gradient-card h6 {
+    color: #ffffff;
+}
+
+body.gray-mode .gradient-card p {
+    color: #cbd5e1;
+}
+
+body.gray-mode .glass-form {
+    background: rgba(22, 24, 54, 0.75);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    box-shadow: 0 12px 35px rgba(124, 58, 237, 0.2);
+}
+
+body.gray-mode .glass-form input,
+body.gray-mode .glass-form textarea {
+    background: rgba(15, 16, 38, 0.85);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: #ffffff;
+}
+
+body.gray-mode .glass-form input:focus,
+body.gray-mode .glass-form textarea:focus {
+    border-color: #c084fc;
+    background: rgba(22, 24, 54, 0.95);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+}
+
+body.gray-mode .glass-form input::placeholder,
+body.gray-mode .glass-form textarea::placeholder {
+    color: #94a3b8;
+}
+
+body.gray-mode .glass-form label,
+body.gray-mode .form-label {
+    color: #e2e8f0;
+}
+
+body.gray-mode .navbar {
+    background: rgba(15, 16, 38, 0.92) !important;
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+body.gray-mode .nav-link {
+    color: #e2e8f0;
+}
+
+body.gray-mode .nav-link:hover {
+    color: #c084fc;
+}
+
+body.gray-mode .ld-lang-btn,
+body.gray-mode .ld-theme-btn {
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: #e2e8f0;
+}
+
+body.gray-mode .ld-lang-btn:hover,
+body.gray-mode .ld-theme-btn:hover,
+body.gray-mode .ld-lang-btn.ld-active,
+body.gray-mode .ld-theme-btn.ld-active {
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    color: #ffffff;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 12px rgba(139, 92, 246, 0.5);
+}
+
+body.gray-mode .btn-primary {
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+    border-color: #8b5cf6;
+    color: #ffffff !important;
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+}
+
+body.gray-mode .btn-primary:hover {
+    background: linear-gradient(135deg, #a855f7, #60a5fa);
+    border-color: #a855f7;
+    color: #ffffff !important;
+    box-shadow: 0 8px 28px rgba(168, 85, 247, 0.6);
+}
+
+body.gray-mode .btn-outline-light {
+    background: transparent;
+    border-color: #c084fc;
+    color: #c084fc !important;
+}
+
+body.gray-mode .btn-outline-light:hover {
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    color: #ffffff !important;
+    border-color: #8b5cf6;
+}
+
+body.gray-mode footer {
+    background-color: rgba(15, 16, 38, 0.95);
+    color: #e2e8f0;
+    border-top: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+body.gray-mode .footer-social i,
+body.gray-mode .footer-email a {
+    color: #e2e8f0;
+}
+
+body.gray-mode .footer-social a:hover i,
+body.gray-mode .footer-email a:hover {
+    color: #c084fc;
+}
+
+body.gray-mode #aiChatPanel {
+    background: rgba(15, 16, 38, 0.97);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8), 0 0 20px rgba(168, 85, 247, 0.25);
+}
+
+body.gray-mode #aiChatHeader {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(59, 130, 246, 0.12));
+    border-bottom: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+body.gray-mode .ai-header-name {
+    color: #c084fc;
+}
+
+body.gray-mode .ai-close-btn {
+    background: rgba(168, 85, 247, 0.15);
+    color: #e2e8f0;
+}
+
+body.gray-mode .ai-msg.ai-bot .ai-msg-bubble {
+    background: rgba(22, 24, 54, 0.8);
+    border: 1px solid rgba(168, 85, 247, 0.25);
+    color: #e2e8f0;
+}
+
+body.gray-mode .ai-msg.ai-user .ai-msg-bubble {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(59, 130, 246, 0.2));
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    color: #c084fc;
+}
+
+body.gray-mode .ai-msg.ai-user .ai-msg-avatar {
+    background: rgba(168, 85, 247, 0.2);
+    color: #e2e8f0;
+}
+
+body.gray-mode #aiQuickQuestions {
+    border-top: 1px solid rgba(168, 85, 247, 0.15);
+    background: rgba(15, 16, 38, 0.6);
+}
+
+body.gray-mode .ai-quick-btn {
+    background: rgba(168, 85, 247, 0.15);
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    color: #c084fc;
+}
+
+body.gray-mode #aiChatInputArea {
+    border-top: 1px solid rgba(168, 85, 247, 0.2);
+    background: rgba(15, 16, 38, 0.6);
+}
+
+body.gray-mode #aiChatInput {
+    background: rgba(22, 24, 54, 0.85);
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: #ffffff;
+}
+
+body.gray-mode #aiChatInput::placeholder {
+    color: #94a3b8;
+}
+
+body.gray-mode .cv-modal-container {
+    background: #0f1026;
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 0 25px rgba(168, 85, 247, 0.25);
+}
+
+body.gray-mode .cv-modal-header {
+    background: rgba(22, 24, 54, 0.9);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.25);
+}
+
+body.gray-mode .cv-modal-title {
+    color: #c084fc;
+}
+
+body.gray-mode .btn-cv-close {
+    background: rgba(168, 85, 247, 0.15);
+    color: #e2e8f0;
+}
+
+body.gray-mode .cv-modal-body {
+    background: #161836;
+}
+
+body.gray-mode .cv-fallback {
+    color: #e2e8f0;
 }
 
 body {

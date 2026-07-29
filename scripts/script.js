@@ -21,7 +21,7 @@ const translations = {
         servicesoptimization: "Responsive Optimization",
         servicespractice: "Ensuring flawless functionality across all devices. Performance optimization and cross-browser compatibility as standard practice.",
         portfolioTitle: "Featured Projects",
-        portfolio1: "Web Platform 1",
+        portfolio1: "Web Platform 6",
         portfolio2: "Ximi Vogue known for its stylishly designed products at affordable prices",
         portfolio3: "Web Platform 4",
         portfolio4: "NEONTECH, committed to advancing technology through innovation.",
@@ -43,7 +43,7 @@ const translations = {
         footerText: "© Leart Demaku - Portfolio. All rights reserved.",
         footercontact: "Contact",
         themeDinner: "Dinner Mode",
-        themeGray: "Gray Mode",
+        themeGray: "Cosmic Mode",
         dynamicTexts: ["I craft high-performance, user-focused web experiences", "Web Developer", "UI/UX implementation", "Web Implementation"],
         viewCV: "View CV",
         cvTitle: "Leart Demaku \u2014 Curriculum Vitae",
@@ -105,7 +105,7 @@ const translations = {
         footerText: "© Leart Demaku - Portfolio. Të gjitha të drejtat e rezervuara.",
         footercontact: "Kontakto",
         themeDinner: "Modaliteti i Darkës",
-        themeGray: "Modaliteti i Hirtë",
+        themeGray: "Modaliteti Kozmik",
         dynamicTexts: ["Un\u00eb krijoj p\u00ebrvoja uebi me performanc\u00eb t\u00eb lart\u00eb", "Zhvillues Uebi", "Zbatimi i UI/UX", "Implementimi i Uebit"],
         viewCV: "Shiko CV",
         cvTitle: "Leart Demaku \u2014 Curriculum Vitae",
@@ -181,6 +181,56 @@ function changeLanguage(lang) {
     closeNav();
 }
 
+function updateParticles(theme) {
+    if (typeof particlesJS === 'undefined') return;
+    var isCosmic = theme === 'gray';
+    var pColor = isCosmic ? '#c084fc' : '#f0c674';
+    var lColor = isCosmic ? '#8b5cf6' : '#f0c674';
+    var lOpacity = isCosmic ? 0.45 : 0.4;
+    var pOpacity = isCosmic ? 0.65 : 0.5;
+
+    if (window.pJSDom && window.pJSDom.length) {
+        try {
+            window.pJSDom[0].pJS.fn.vendors.destroypJS();
+            window.pJSDom = [];
+        } catch (e) {}
+    }
+
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 85 },
+            color: { value: pColor },
+            shape: { type: 'circle' },
+            opacity: { value: pOpacity },
+            size: { value: 3 },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: lColor,
+                opacity: lOpacity,
+                width: 1.2
+            },
+            move: {
+                enable: true,
+                speed: 5,
+                direction: 'none',
+                random: false,
+                straight: false,
+                out_mode: 'out',
+                bounce: false
+            }
+        },
+        interactivity: {
+            detect_on: 'canvas',
+            events: {
+                onhover: { enable: window.innerWidth >= 992, mode: 'repulse' },
+                onclick: { enable: window.innerWidth >= 992, mode: 'push' },
+                resize: true
+            }
+        }
+    });
+}
+
 function changeTheme(theme) {
     if (theme === 'gray') {
         document.body.classList.add('gray-mode');
@@ -203,6 +253,7 @@ function changeTheme(theme) {
 
     localStorage.setItem('selectedTheme', theme);
     closeNav();
+    updateParticles(theme);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -309,34 +360,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS('particles-js', {
-            particles: {
-                number: { value: 80 },
-                color: { value: '#f0c674' },
-                shape: { type: 'circle' },
-                opacity: { value: 0.5 },
-                size: { value: 3 },
-                move: {
-                    enable: true,
-                    speed: 5,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: { enable: window.innerWidth >= 992, mode: 'repulse' },
-                    onclick: { enable: window.innerWidth >= 992, mode: 'push' },
-                    resize: true
-                }
-            }
-        });
-    }
+    updateParticles(localStorage.getItem('selectedTheme') || 'black');
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
