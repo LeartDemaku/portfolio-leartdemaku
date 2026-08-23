@@ -279,6 +279,11 @@ body.gray-mode .ai-msg.ai-user .ai-msg-avatar {
 body.gray-mode #aiQuickQuestions {
     border-top: 1px solid rgba(168, 85, 247, 0.15);
     background: rgba(15, 16, 38, 0.6);
+    scrollbar-color: rgba(168, 85, 247, 0.3) transparent;
+}
+
+body.gray-mode #aiQuickQuestions::-webkit-scrollbar-thumb {
+    background: rgba(168, 85, 247, 0.3);
 }
 
 body.gray-mode .ai-quick-btn {
@@ -456,6 +461,7 @@ body {
 .static-image {
     max-width: 700px;
     width: 100%;
+    height: auto;
     display: block;
     margin: 0 auto;
 }
@@ -1648,25 +1654,44 @@ body.cv-open {
 
 #aiQuickQuestions {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
     gap: 6px;
-    padding: 0.6rem 1rem;
+    padding: 0.45rem 0.75rem;
     border-top: 1px solid rgba(255,255,255,0.05);
     background: rgba(255,255,255,0.02);
     flex-shrink: 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(240,198,116,0.2) transparent;
+    -webkit-overflow-scrolling: touch;
+}
+
+#aiQuickQuestions::-webkit-scrollbar {
+    height: 3px;
+}
+
+#aiQuickQuestions::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#aiQuickQuestions::-webkit-scrollbar-thumb {
+    background: rgba(240,198,116,0.25);
+    border-radius: 3px;
 }
 
 .ai-quick-btn {
     background: rgba(240,198,116,0.08);
     border: 1px solid rgba(240,198,116,0.2);
     color: #c8a84b;
-    padding: 0.3rem 0.7rem;
+    padding: 0.28rem 0.65rem;
     border-radius: 20px;
     font-size: 0.72rem;
     cursor: pointer;
     transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
     white-space: nowrap;
     font-weight: 500;
+    flex-shrink: 0;
 }
 
 .ai-quick-btn:hover {
